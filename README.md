@@ -10,6 +10,7 @@ Currently app is in developement state (!), it able to receive `getblocktemplate
 - Support of so-called "local mode", which allows stratum binary work without Yiimp installed. In this mode it don't need yimmp mysql database and acts as a proxy between daemon `getblocktemplate` and stratum protocol for miners. To enable this mode use `CFLAGS += -DNO_MYSQL` flag in `Makefile`. Coin daemons credentials should be hardcoded in `coins_data[NUM_COINS][NUM_PARAMS]` array in `db.cpp`.
 - Supporting of selecting coins via pass `-c=` param in password field in local (non mysql mode).
 - Sapling compatible. This implementation of stratum don't construct coinbase tx by itself, instead of that it simply copies coinbase given by daemon in `coinbasetxn` field of `getblocktemplate`. So, if coin has sapling active coinbase tx will be with version 4 and needed `versiongroupid` set.
+- Support for VTC
 
 ### Small Q/A
 
@@ -111,21 +112,11 @@ In this example:
 - https://github.com/yqsy/notes/blob/58cd486426e474157ac8ef1c17a934d25401b8f1/business/blockchain/bitcoin/%E7%A5%9E%E5%A5%87%E7%9A%84nBits.md
 - https://bitcoin.stackexchange.com/questions/30467/what-are-the-equations-to-convert-between-bits-and-difficulty
 
-### Example of work
-
-- MORTY block [#215488](https://morty.kmd.dev/block/000179a65539ff4d4f358f05306b1d715293f01581fb959ecaa4894b1038829b) `000179a65539ff4d4f358f05306b1d715293f01581fb959ecaa4894b1038829b`
-
-![MORTY block #215488](./images/morty-block-01.png "MORTY block #215488")
-
-![STRATUM block #319](./images/morty-block-02.png "STRATUM block #319")
-
-### Donate
-
-If you would like to support this project developement, you can simply do it by send some [KMD](https://komodoplatform.com/) or [assetchains](https://blog.komodoplatform.com/komodo-platform-why-assetchains-part-01-164325398efa) on `RHNSpVd5T6efj98CioNQHGLcfAZ6qecnQ6`.
 
 ### Credits
 
 - @tpruvot author of Yiimp pool and base of this stratum implementation.
+- @DeckerSU implemented many new features
 
 ### Warnings
 

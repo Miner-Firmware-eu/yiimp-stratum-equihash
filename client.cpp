@@ -237,7 +237,8 @@ bool client_authorize(YAAMP_CLIENT *client, json_value *json_params)
 		}
 	}
 
-	if (!is_base58(client->username)) {
+    // VTC is not base58 compliant
+	if (!is_base58(client->username) && false) {
 		clientlog(client, "bad mining address %s", client->username);
 		return false;
 	}
